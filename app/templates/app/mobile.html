@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    
+
+      <div class="list-group">
+        <a href=" {% url 'mobile' %} " class="list-group-item list-group-item-action" aria-current="true">All Item</a>
+        <a href="{% url 'mobiledata' 'Redmi' %}" class="list-group-item list-group-item-action" aria-current="true">Redmi</a>
+        <a href="{% url 'mobiledata' 'Samsung' %}" class="list-group-item list-group-item-action" aria-current="true">Samsung</a>
+        <a href="{% url 'mobiledata' 'Vivo' %}" class="list-group-item list-group-item-action" aria-current="true">Vivo</a>
+        <a href="{% url 'mobiledata' 'upto' %}" class="list-group-item list-group-item-action" aria-current="true">Up to 10000</a>
+        <a href="{% url 'mobiledata' 'below' %}" class="list-group-item list-group-item-action" aria-current="true">below 10000</a>
+      </div>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+    
+    <div class="row">
+        
+      {% for i in m %}
+      <div class="col-sm-4">
+          <a href="{% url 'product-detail' i.id %}" class="btn">
+              <div class="item">
+                  <img src="{{i.image.url}}" alt="" height="200px">
+                  <span class="fw-bold">{{i.title}}</span><br>
+                  <span class="fs-5">TK.{{i.discount_price}}</span>
+                </div>
+            </a>
+        </div>
+      {% endfor %}
+    </div>
+    </div>
+ 
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
